@@ -1,0 +1,250 @@
+@font-face {
+    font-family: 'Open Sans Regular';
+    src: url('Fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Open Sans Regular", sans-serif;
+    padding: 3px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:border-box;
+    overflow-x: hidden
+}
+
+#headerBar {
+    width: 100%;
+    height: 60px;
+    position: relative;
+}
+
+#logoDiv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 50px;
+    z-index: 2;
+}
+
+#logo {
+    position: absolute;
+    height: 100%;
+    margin: 2px;
+    padding: 3px;
+    background-color: #ddd;
+}
+
+#progressDiv {
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #ddd;
+}
+
+#loadBar {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: rgb(95, 110, 65);
+}
+
+#loadBarLabel {
+    text-align: center;
+    line-height: 60px;
+    color: white;
+}
+
+.tableSearchInput {
+    background: url("Images/ic_search_black_48dp_2x.png") no-repeat scroll 10px 12px transparent;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin: 0;
+
+    display: none;
+}
+
+#stickyTable.tableSearchInput {
+    position: fixed;
+}
+
+#tableDiv {
+    overflow-x: auto;
+}
+
+#stickyDiv {
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    width: calc(100% - 6px);
+}
+
+#stickyTable {
+    position: relative;
+    top: 0;
+    overflow-x: hidden;
+    table-layout: fixed;
+    display: table;
+}
+
+.tables {
+    font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+
+#dataTable {
+    table-layout: auto;
+}
+
+/*
+#dataTable tr.visible-rows:nth-of-type(even) {
+    background-color: yellow;
+}
+*/
+
+.tables td, .tables th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tables tr:nth-child(even){background-color: #f2f2f2;}
+
+.tables tr:hover {background-color: #ddd;}
+
+.tables button  {
+    display: none;
+    cursor: pointer;
+}
+
+.tables td:hover > button {
+    display: initial;
+
+    display: none;
+}
+
+.tables th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(95, 110, 65);
+    color: white;
+}
+
+.tables img {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+}
+
+#cardPreviewA {
+    position: relative;
+    width: 100%;
+}
+#cardPreviewB {
+    position: relative;
+    width: 100%;
+}
+
+#cardAPreviewImage {
+    display: block;
+    margin: auto;
+    width: 50%;
+    max-width: 700px;
+    background-color: #ddd;
+    padding: 3px;
+}
+#cardBPreviewImage {
+    display: block;
+    margin: auto;
+    width: 50%;
+    max-width: 700px;
+    background-color: #ddd;
+    padding: 3px;
+}
+
+#downloadLink, #csv-file {
+    margin: auto;
+}
+
+#cardFormDiv {
+    position: relative;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#cardFormDiv fieldset {
+    border: none;
+}
+
+#cardFormDiv legend {
+    display: none;
+}
+
+#cardFormDiv input[type=text], #cardFormDiv input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#submitInputLabel {
+    float: right;
+    /* display: inline-block; */
+    background: url("Images/ic_file_download_white_48dp_2x.png") no-repeat scroll 10% transparent;
+}
+
+#dataFilesInputLabel {
+    background: url("Images/ic_file_upload_white_48dp_2x.png") no-repeat scroll 10% transparent;
+}
+
+#submitInputLabel, #dataFilesInputLabel, #runButtonLabel {
+    width: calc(100% - 39px - 50% - 8px);
+    background-color: rgb(185, 0, 243);
+    color: white;
+    font-size: 15pt;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 30px;
+    text-align:center;
+    display: inline-block;
+    background-size: 30px;
+}
+
+#submitInputLabel:hover, #dataFilesInputLabel:hover, #runButtonLabel:hover  {
+    background-color: rgb(185, 84, 182);
+}
+
+#dataFilesInput[disabled] + #dataFilesInputLabel, #submitInput[disabled] + #submitInputLabel {
+    background-color: rgb(216, 168, 214);
+    cursor: default;
+}
+#cardFormDiv input[type=submit], #cardFormDiv input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}

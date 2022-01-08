@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Object to Audio Builder</title>
+    <link rel="icon" type="image/png" href="Files/Images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="Files/Images/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="Files/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- <script type="text/javascript" src="Files/Libraries/jquery.min.js"></script> -->
+    <script type="text/javascript" src="Files/Libraries/qrcode.js"></script>
+    <script type="text/javascript" src="Files/Libraries/VanillaQR.min.js"></script>
+    <script type="text/javascript" src="Files/Libraries/papaparse.min.js"></script>
+    <script type="text/javascript" src="Files/Libraries/jszip.min.js"></script>
+    <script type="text/javascript" src="Files/Libraries/FileSaver.min.js"></script>
+    <script type="text/javascript" src="Files/Libraries/canvas-toBlob.js"></script>
+    <script type="text/javascript" src="Files/Libraries/encoding.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/css/bootstrap-select.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    
+
+    <style>
+    .check-mark{
+        left: 15px;
+    }
+    .dropdown-menu .text{
+        padding-left:20px;
+    }
+    
+    
+
+    </style>
+
+</head>
+
+<body>
+    <div id="headerBar">
+        <div id="logoDiv">
+            <a href="http://caura.org" target="_blank">
+                <img id="logo" src="Files/Images/cauraLogo.png" />
+            </a>
+        </div>
+        <div id="progressDiv">
+            <div id="loadBar">
+                <div id="loadBarLabel"></div>
+            </div>
+            <label id="loadBarTitle">Object to Audio Builder</label>
+        </div>
+    </div>
+    <div id="cardFormDiv">
+        <form name="cardForm" onsubmit="return false;" accept-charset="UTF-8">
+            <fieldset id="dataFormField">
+                <label for="cardFolderName" style="display: none;">Folder Name</label>
+                <input type="text" id="cardFolderName" name="folderNameField" style="display: none;" value="" onkeyup="textValidate(this);">
+                <br>
+                <label for="cardIdDigits">Digits in numerical ID</label>
+                <input id="cardIdDigits" type="number" name="digitsField" value="6">
+                <br><br>
+            </fieldset>
+            <input id="dataFilesInput" type="file" name="files" charset=utf-8 onchange="handleSelectedFile(event.target.files)"
+                webkitdirectory directory multiple />
+            <label id="dataFilesInputLabel" for="dataFilesInput">Choose Files</label>
+            <br><br>
+            <label id="errorlabel"style="display: none; color: #ff0000;">Error Info</label>
+            <div id="invalidMessages"style="color: #ff0000;"></div>
+            <br><br>
+            <div id="divSelectField" class="form-group" style="display: none;">
+                <label class="control-label">Select items for QR code information: </label>
+                <select id="select_fileds" class="selectpicker form-control" multiple="true">
+                    
+                </select>
+                <br><br>
+                <label class="control-label">Select images for card side "A": </label>
+                <select id="select_filedsA" class="selectpicker form-control dropup" data-dropup-auto="false" multiple="true">
+                </select>
+                <br><br>
+                <label class="control-label">Select data fields for card side "B": </label>
+                <select id="select_filedsB" class="selectpicker form-control" multiple="true">
+                </select>
+                <br><br>
+                <input id="runButton" type="submit" name="runButton" value="run" onclick="runClick()">
+                <label id="runButtonLabel" for="runButton">Run</label>
+                <input id="submitInput" type="submit" name="submitButton" value="Download" disabled="disabled"
+                    onclick="downloadData()">
+                <label id="submitInputLabel" for="submitInput">Download data</label>
+                <!-- <img id="img1" src="1.png" style="position: absolute;top: 44%;right: 3%;">
+                <img id="img2" src="1.png" style="position: absolute;top: 56%;right: 3%;">
+                <img id="img3" src="1.png" style="position: absolute;top: 67%;right: 3%;"> -->
+            </div>
+            <br><br>
+        </form>
+        <div id="cardPreviewA"></div>
+        
+        <div id="cardPreviewB"></div>
+    </div>
+
+    <div id="cardACanvasPreviewDiv"></div>
+    <div id="cardBCanvasPreviewDiv"></div>
+    <div id="cardPreviewQrCode"></div>
+
+    <div id="tableDiv"></div>
+    <script type="text/javascript" src="Files/indexScript.js">
+
+    </script>
+</body>
+
+</html>
